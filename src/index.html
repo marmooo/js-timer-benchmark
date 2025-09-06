@@ -46,6 +46,7 @@
         <div class="alert alert-warning">Please turn on Javascript.</div>
       </noscript>
       <p>
+      This page allows you to benchmark various timer processes.
       Press the START button to run the benchmark.
       The benchmark will measure n seconds and measure its accuracy.
       When benchmarking, keep in mind that JavaScript execution speed differs between foreground and background.
@@ -92,6 +93,13 @@
               </p>
             </div>
           </div>
+        </div>
+        <div class="alert alert-info mt-3">
+          <h4>Tips for Web Audio API</h4>
+          <ul>
+            <li>AudioScheduledSourceNode needs a path to the destionation</li>
+            <li>AudioBufferSourceNode requires AudioBuffer</li>
+          </ul>
         </div>
       </div>
     </main>
