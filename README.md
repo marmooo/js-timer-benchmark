@@ -74,6 +74,11 @@ higher than theirs.
 Suitable for audio playback or when you need a high-precision timer in inactive
 tabs. It is less accurate than setTimeout and setInterval in active tabs.
 
+## Tips for Web Audio API
+
+- AudioScheduledSourceNode needs a path to the destionation
+- AudioBufferSourceNode requires AudioBuffer
+
 ## Build
 
 ```
