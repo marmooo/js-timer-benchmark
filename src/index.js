@@ -43,6 +43,12 @@ function testAudioBufferSourceNode(delay) {
   return new Promise((resolve) => {
     // const source = audioContext.createBufferSource();
     const source = new AudioBufferSourceNode(audioContext);
+    const buffer = new AudioBuffer({
+      length: 1,
+      sampleRate: audioContext.sampleRate,
+    });
+    source.buffer = buffer;
+    source.connect(scheduler);
     const startTime = performance.now();
     source.onended = () => {
       const endTime = performance.now();
@@ -59,6 +65,7 @@ function testConstantSourceNode(delay) {
   return new Promise((resolve) => {
     // const source = audioContext.createConstantSource();
     const source = new ConstantSourceNode(audioContext);
+    source.connect(scheduler);
     const startTime = performance.now();
     source.onended = () => {
       const endTime = performance.now();
@@ -75,6 +82,7 @@ function testOscillatorNode(delay) {
   return new Promise((resolve) => {
     // const oscillator = audioContext.createOscillator();
     const oscillator = new OscillatorNode(audioContext);
+    oscillator.connect(scheduler);
     const startTime = performance.now();
     oscillator.onended = () => {
       const endTime = performance.now();
@@ -132,6 +140,9 @@ function test() {
 
 loadConfig();
 const audioContext = new AudioContext();
+const scheduler = audioContext.createGain();
+scheduler.gain.value = 0;
+scheduler.connect(audioContext.destination);
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("startButton").onclick = test;
