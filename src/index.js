@@ -140,7 +140,7 @@ function test() {
 
 loadConfig();
 const audioContext = new AudioContext();
-const scheduler = audioContext.createGain();
+const scheduler = new GainNode(audioContext);
 scheduler.gain.value = 0;
 scheduler.connect(audioContext.destination);
 
