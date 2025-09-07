@@ -42,12 +42,11 @@ function testSetInterval(delay, interval) {
 function testAudioBufferSourceNode(delay) {
   return new Promise((resolve) => {
     // const source = audioContext.createBufferSource();
-    const source = new AudioBufferSourceNode(audioContext);
     const buffer = new AudioBuffer({
       length: 1,
       sampleRate: audioContext.sampleRate,
     });
-    source.buffer = buffer;
+    const source = new AudioBufferSourceNode(audioContext, { buffer });
     source.connect(scheduler);
     const startTime = performance.now();
     source.onended = () => {
@@ -140,8 +139,7 @@ function test() {
 
 loadConfig();
 const audioContext = new AudioContext();
-const scheduler = new GainNode(audioContext);
-scheduler.gain.value = 0;
+const scheduler = new GainNode(audioContext, { gain: 0 });
 scheduler.connect(audioContext.destination);
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
