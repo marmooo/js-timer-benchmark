@@ -144,3 +144,8 @@ scheduler.connect(audioContext.destination);
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("startButton").onclick = test;
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") return;
+  if (audioContext.state !== "suspended") return;
+  audioContext.resume();
+});

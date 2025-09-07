@@ -76,8 +76,11 @@ tabs. It is less accurate than setTimeout and setInterval in active tabs.
 
 ## Tips for Safari
 
-- AudioScheduledSourceNode needs a path to the destionation
-- AudioBufferSourceNode requires AudioBuffer
+- AudioScheduledSourceNode needs to be connected to the destionation
+- AudioBufferSourceNode requires an AudioBuffer
+- Web Audio API is forcibly "suspended" when entering the background
+- Web Audio API cannot be resumed while in the background
+- Web Audio API requires resume() when returning to the foreground
 
 ## Build
 
