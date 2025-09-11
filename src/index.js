@@ -55,8 +55,8 @@ function testAudioBufferSourceNode(delay) {
       resolve(result);
     };
     const time = audioContext.currentTime + delay / 1000;
+    // source.start(time, 1); // sometimes it does not work on iOS
     source.start(time);
-    source.stop(time);
   });
 }
 
